@@ -1,0 +1,10 @@
+<select class="form-select form-control" [value]="getSortBy()" (change)="onSortChange($event)">
+  <option *ngFor="let field of sortFields" [value]="field.value">{{ field.label }}</option>
+</select>
+<button
+  [disabled]="!getOrderByVisible()"
+  class="btn btn-outline-secondary ml-2"
+  (click)="onOrderByClick()"
+  [title]="getOrderByTooltip()">
+  {{ getOrderBySymbol() }}
+</button>
