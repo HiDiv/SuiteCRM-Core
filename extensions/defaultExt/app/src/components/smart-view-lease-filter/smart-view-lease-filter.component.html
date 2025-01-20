@@ -1,0 +1,53 @@
+<div class="lease-filter-card">
+  <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <div class="lease-filter-controls row">
+      <div class="form-group col-md-4">
+        <label for="name">Улица или название</label>
+        <input
+          formControlName="name"
+          id="name"
+          type="text"
+          class="form-control"
+          placeholder="Введите улицу или название" />
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="unitSizeFrom">Площадь, м² (от)</label>
+        <input formControlName="unitSizeFrom" id="unitSizeFrom" type="number" class="form-control" placeholder="От" />
+        <div *ngIf="isFieldInvalid('unitSizeFrom')" class="error">Значение должно быть числом больше нуля</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="unitSizeTo">Площадь, м² (до)</label>
+        <input formControlName="unitSizeTo" id="unitSizeTo" type="number" class="form-control" placeholder="До" />
+        <div *ngIf="isFieldInvalid('unitSizeTo')" class="error">Значение должно быть числом больше нуля</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="rentFrom">Бюджет, ₽ (от)</label>
+        <input id="rentFrom" type="number" formControlName="rentFrom" class="form-control" placeholder="От" />
+        <div *ngIf="isFieldInvalid('rentFrom')" class="error">Значение должно быть числом больше нуля</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="rentTo">Бюджет, ₽ (до)</label>
+        <input id="rentTo" type="number" formControlName="rentTo" class="form-control" placeholder="До" />
+        <div *ngIf="isFieldInvalid('rentTo')" class="error">Значение должно быть числом больше нуля</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="rentType">Бюджет за</label>
+        <select id="rentType" formControlName="rentType" class="form-control">
+          <option *ngFor="let rentType of rentTypes" [value]="rentType.value">
+            {{ rentType.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="lease-filter-actions">
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Сбросить</button>
+      <button class="btn btn-primary" type="submit" [disabled]="isSubmitDisabled()">Применить</button>
+    </div>
+  </form>
+</div>

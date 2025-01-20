@@ -1,0 +1,13 @@
+<div class="lease-tool-bar">
+  <scrm-smart-view-lease-order
+    [sortBy]="order.sortBy"
+    [orderBy]="order.orderBy"
+    (changeSortOrder)="onOrderChange($event)"></scrm-smart-view-lease-order>
+
+  <scrm-smart-view-pagination
+    *ngIf="pagination.page"
+    [page]="pagination.page"
+    [itemsPerPage]="pagination.itemsPerPage"
+    [totalCount]="pagination.totalCount"
+    (pageChange)="onPageChange($event)"></scrm-smart-view-pagination>
+</div>

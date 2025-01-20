@@ -1,0 +1,8 @@
+<div class="lease-order">
+  <select [(ngModel)]="currentSortBy">
+    <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
+  </select>
+  <button (click)="toggleOrderBy()" [disabled]="!sortBy" class="order-button">
+    {{ orderBy === 'asc' ? '▲' : '▼' }}
+  </button>
+</div>

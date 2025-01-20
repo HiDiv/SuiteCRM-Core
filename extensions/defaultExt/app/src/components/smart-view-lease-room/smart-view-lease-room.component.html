@@ -1,0 +1,55 @@
+<div class="lease-room-card">
+  <div class="photo">
+    <!--    <ng-container *ngIf="leaseRoom.photoUrl; else noPhoto">-->
+    <!--      <img [src]="leaseRoom.photoUrl" alt="Фото помещения" />-->
+    <!--    </ng-container>-->
+    <!--    <ng-template #noPhoto>-->
+    <div class="no-photo">Фото отсутствует</div>
+    <!--    </ng-template>-->
+  </div>
+  <div class="room-details">
+    <h3 class="link" [routerLink]="['/rooms', 'record', leaseRoom._id]">{{ leaseRoom.name }}</h3>
+    <p>
+      <strong>Площадь:</strong>
+      <span class="value"
+        ><span class="highlight-area">{{ leaseRoom.unitSize | number: '1.2-2' }}</span>
+        <span class="unit">м²</span></span
+      >
+    </p>
+    <p>
+      <strong>Ставка аренды:</strong>
+      <span class="value"
+        ><span class="highlight-area">{{ rentPerMonth() | number: '1.2-2' }}</span>
+        <span class="unit">₽ в месяц</span></span
+      >
+    </p>
+    <p>
+      <strong>Ставка аренды:</strong>
+      <span class="value"
+        ><span class="highlight-light">{{ rentSqPerMonth() | number: '1.2-2' }}</span>
+        <span class="unit">₽/м² в месяц</span></span
+      >
+    </p>
+    <p>
+      <strong>Ставка аренды:</strong>
+      <span class="value"
+        ><span class="highlight-light">{{ leaseRoom.grossRent | number: '1.2-2' }}</span>
+        <span class="unit">₽/м² в год</span></span
+      >
+    </p>
+    <p *ngIf="leaseRoom.floor"><strong>Этаж:</strong> {{ leaseRoom.floor }}</p>
+    <p *ngIf="leaseRoom.deliveryCondition"><strong>Состояние:</strong> {{ leaseRoom.deliveryCondition }}</p>
+    <p *ngIf="leaseRoom.typicalFloorLayout"><strong>Планировка:</strong> {{ leaseRoom.typicalFloorLayout }}</p>
+  </div>
+  <div class="building-details">
+    <h4>Здание</h4>
+    <p>
+      <strong>Наименование:</strong>
+      <span class="link" [routerLink]="['/building-offices', 'record', leaseRoom.building._id]">
+        {{ leaseRoom.building.name }}
+      </span>
+    </p>
+    <p><strong>Класс:</strong> {{ leaseRoom.building.buildingClass }}</p>
+    <p><strong>Адрес:</strong> {{ leaseRoom.building.address }}</p>
+  </div>
+</div>
