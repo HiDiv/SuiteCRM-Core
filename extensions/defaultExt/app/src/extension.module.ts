@@ -4,19 +4,12 @@ import { NgModule } from '@angular/core';
 import { Router, Routes } from '@angular/router';
 import { AuthGuard } from 'core';
 
+import { SmartViewRoomsComponent, SmartViewRoomsModule } from './views';
+
 const smartSearchRoutes: Routes = [
   {
-    path: 'building-offices/smart-search',
-    loadChildren: async () =>
-      (await import('./views/smart-search/components/smart-view-building-offices/smart-view-building-offices.module'))
-        .SmartViewBuildingOfficesModule,
-    canActivate: [AuthGuard],
-    runGuardsAndResolvers: 'always',
-  },
-  {
     path: 'rooms/smart-search',
-    loadChildren: async () =>
-      (await import('./views/smart-search/components/smart-view-rooms/smart-view-rooms.module')).SmartViewRoomsModule,
+    component: SmartViewRoomsComponent,
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always',
   },
@@ -25,7 +18,7 @@ const smartSearchRoutes: Routes = [
 @NgModule({
   declarations: [],
   exports: [],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, SmartViewRoomsModule],
   providers: [],
 })
 export class ExtensionModule {
@@ -34,6 +27,6 @@ export class ExtensionModule {
     this.router.resetConfig([...smartSearchRoutes, ...oldRoutes]);
   }
 
-  init(): void {
+  public init(): void {
   }
 }

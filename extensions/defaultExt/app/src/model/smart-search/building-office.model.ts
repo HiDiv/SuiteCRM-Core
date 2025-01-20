@@ -1,7 +1,7 @@
 export interface BuildingOffice {
-  id: string;
-  _id: string;
-  name: string;
-  buildingClass: string;
-  address: string;
+  id: string; // id
+  _id: string; // id записи
+  name: string; // Наименование здания
+  buildingClass: string; // Класс
+  address: string; // Адрес
 }
